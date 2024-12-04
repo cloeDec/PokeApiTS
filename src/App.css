@@ -16,16 +16,14 @@ body {
 
 /* Style de la carte Pokémon */
 .card {
-  width: 250px;
-  background-color: #ffffff;
-  border: 2px solid #f0c674;
+  background-color: #f0f0f0;
+  border: 10px solid #ffe165;
   border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  text-align: center;
   padding: 20px;
-  transition: transform 0.2s ease-in-out;
-  margin-bottom: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-size: cover;
+  background-position: center;
 }
 
 .card:hover {
@@ -34,10 +32,15 @@ body {
 
 /* Image du Pokémon */
 .card img {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 10px;
+  image-rendering: pixelated;
+  width: 250px;
+  height: 180px;
+  border: 10px solid #dbdcde;
   object-fit: contain;
+  /* background-image: url('https://i.pinimg.com/736x/52/9d/2b/529d2b151c33ba79a4008b6da88fdf85.jpg'); */
+  /* background-image: url('https://pics.craiyon.com/2024-03-06/u_5Jj5xSSuqs0IljuTQdhA.webp'); */
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTewZm9yYtmuQoTE8eoYNJbmcgPgC7sRf8yzw&s');
+  background-size: cover;
 }
 
 /* Nom du Pokémon */
@@ -46,6 +49,16 @@ body {
   color: #333;
   margin: 10px 0;
 }
+
+.card .pokemon-specify{
+  display: flex;
+  background-color: #dbdcde;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  justify-content: center;
+  gap: 15px;
+}
+
 
 /* Détails du Pokémon */
 .card p {
