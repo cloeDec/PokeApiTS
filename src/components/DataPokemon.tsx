@@ -11,7 +11,9 @@ const DataPokemon: React.FC<data> = ({ pokemon }) => {
       <img src={pokemon.sprites.front_default} alt={pokemon.name} />
       <p>Taille : {pokemon.height}</p>
       <p>Poids : {pokemon.weight}</p>
-      <p>Type : {pokemon.types.type}</p>
+      <p>
+        Type : {pokemon.types.map((type: any) => type.type.name).join(", ")}
+      </p>
     </div>
   );
 };

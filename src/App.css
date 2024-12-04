@@ -1,4 +1,97 @@
 body {
   text-align: center;
   margin: 10px;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+/* Style du conteneur global */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Style de la carte Pokémon */
+.card {
+  width: 250px;
+  background-color: #ffffff;
+  border: 2px solid #f0c674;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.2s ease-in-out;
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Image du Pokémon */
+.card img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+  object-fit: contain;
+}
+
+/* Nom du Pokémon */
+.card h2 {
+  font-size: 1.5em;
+  color: #333;
+  margin: 10px 0;
+}
+
+/* Détails du Pokémon */
+.card p {
+  font-size: 1em;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Type de Pokémon */
+.card .types {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.card .types span {
+  background-color: #f0c674;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Style pour les faiblesses */
+.card .weaknesses {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.card .weaknesses h3 {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.card .weaknesses ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.card .weaknesses li {
+  background-color: #ffcccb;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 5px;
+  color: #d80000;
+  font-weight: bold;
 }
