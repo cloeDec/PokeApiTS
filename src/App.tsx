@@ -1,34 +1,26 @@
-// App.tsx
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Homepage from "./pages/homepage";
+import FavoritesPokemon from "./pages/favoritesPokemon";
+import VueCartodex from "./pages/vueCartodex";
+import Details from "./pages/details";
 
-import React, { useState } from "react";
-import "./App.css";
-import Recherche from "./components/Recherche";
-import { fetchData } from "./service/pokeAPI";
-import DataPokemon from "./components/DataPokemon";
-import ListePokemon from "./components/AllPokemon";
-
-const App: React.FC = () => {
-  const [pokemon, setPokemon] = useState<any | null>(null); // Change l'état pour inclure null
-
-  const handleRecherche = async (nom: string) => {
-    const response = await fetchData(nom);
-    setPokemon(response);
-    console.log(response);
-  };
-
+function App() {
   return (
-    <div>
-      <Recherche getByName={handleRecherche} />
+    <Router>
+      <nav>
+        <Link to="/">Liste des Pokémon</Link>
+        <Link to="/cartodex">Vue Carte</Link>
+        <Link to="/favoris">Mes Favoris</Link>
+      </nav>
 
-      {pokemon ? (
-        <DataPokemon pokemon={pokemon} />
-      ) : (
-        <p>Aucun Pokémon sélectionné</p>
-      )}
-
-      <ListePokemon />
-    </div>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/favoris" element={<FavoritesPokemon />} />
+        <Route path="/cartodex" element={<VueCartodex />} />
+        <Route path="/pokemon/:id" element={<Details />} />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;

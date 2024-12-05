@@ -1,41 +1,38 @@
-import React, { useEffect, useState } from "react";
-import { fetchWeaknessesFromAPI } from "../service/pokeAPI";
+import React from "react";
+import { PokemonType, typeWeaknesses, typeColors } from "./pokemonTypes";
 
 interface WeaknessesProps {
-  types: string[];
+  types: { type: { name: string } }[];
 }
 
 const Weaknesses: React.FC<WeaknessesProps> = ({ types }) => {
-  const [weaknesses, setWeaknesses] = useState<string[]>([]);
+  const calculateWeaknesses = () => {
+    const weaknesses = new Set<PokemonType>();
 
-  useEffect(() => {
-    const fetchAllWeaknesses = async () => {
-      const allWeaknesses = new Set<string>();
+    types.forEach(({ type }) => {
+      const pokemonType = type.name as PokemonType;
+      typeWeaknesses[pokemonType]?.forEach((weakness) => {
+        weaknesses.add(weakness);
+      });
+    });
 
-      // Parcours des types et récupération des faiblesses pour chaque type
-      for (const type of types) {
-        const typeWeaknesses = await fetchWeaknessesFromAPI(type);
-        typeWeaknesses.forEach((weakness : string) => allWeaknesses.add(weakness));
-      }
-
-      setWeaknesses(Array.from(allWeaknesses));
-    };
-
-    fetchAllWeaknesses();
-  }, [types]);
+    return Array.from(weaknesses).slice(0, 2);
+  };
 
   return (
-    <div>
+    <div className="section">
       <h3>Faiblesses</h3>
-      {weaknesses.length > 0 ? (
-        <ul>
-          {weaknesses.map((weakness, index) => (
-            <li key={index}>{weakness}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>Aucune faiblesse détectée.</p>
-      )}
+      <div className="list">
+        {calculateWeaknesses().map((weakness, index) => (
+          <span 
+            key={index} 
+            className={`type ${weakness}`}
+            style={{ backgroundColor: typeColors[weakness] }}
+          >
+            {weakness}
+          </span>
+        ))}
+      </div>
     </div>
   );
 };
