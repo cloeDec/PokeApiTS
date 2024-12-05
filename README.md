@@ -1,3 +1,8 @@
+![Pokedex](./assets/1.png)
+![Pokedex2](./assets/2.png)
+![Pokedex3](./assets/3.png)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
